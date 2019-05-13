@@ -1,25 +1,22 @@
 import random
 def computersTurn(letters):
-    print(letters)
-    words = []
-    possibleWords = []
     try:
         with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
             words = f.read().split()
-            for word in words:
+            possibleWords = []
+            for i in range(len(words)):
                 flag = 1
                 checker = list(letters)
-                for i in range(len(word)):
-                    if word[i] in checker:
-                        checker.remove(word[i])
+                for x in range(len(words[i])):
+                    if words[i][x] in checker:
+                        checker.remove(words[i][x])
                     else:
                         flag = 0
                         break
                 if flag == 1:
-                    possibleWords.append(word)    
-        rand = random.choice(possibleWords)                
+                    possibleWords.append(words[i]) 
+            rand = random.choice(possibleWords) 
+            return rand
     except FileNotFoundError:
         print('file not found')
-    return rand
 
-print(computersTurn('tiantmuogsselom'))

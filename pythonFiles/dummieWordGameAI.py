@@ -5,9 +5,6 @@ def computer_words(letters):
 
     # The list of words that can be created with those chars
     possibleWords = []
-
-    with open(filename, 'r') as dictionary:
-        for word in dictionary:
     return None
 
 

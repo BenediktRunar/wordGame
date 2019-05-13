@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from letters import *
+from computersTurn import *
 app = Flask(__name__)
-
 
 @app.route("/home")
 @app.route("/")
@@ -16,9 +16,9 @@ def TwoPlayer():
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
-    lettersChosen = letters()
-    return render_template('playerVsComputer.html', letters = lettersChosen)
-
+    l = letters()
+    w = computersTurn((''.join(l)).lower())
+    return render_template('playerVsComputer.html', l = l, word = w)
 
 if __name__ == '__main__':
     app.run(debug=True)
