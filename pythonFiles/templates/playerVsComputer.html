@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <title>Player Vs Computer</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block content %}
     <h3>letters Chosen: </h3>
     <ul>
         {% for letter in letters %}
             <li>{{ letter }}</li>    
         {% endfor %}
     </ul>
-</body>
-</html>
+{% endblock content %}
+
+git status
