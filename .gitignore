@@ -185,4 +185,7 @@ dmypy.json
 
 # Pyre type checker
 
+#Ignore these files -BRV
+.idea/
+
 # End of https://www.gitignore.io/api/flask,python
