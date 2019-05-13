@@ -1,4 +1,10 @@
 {% extends "layout.html" %}
 {% block content %}
-    <p>computer says no</p>
+    <h3>letters Chosen: </h3>
+    <p>
+        {% for letter in letters %}
+        {{ letter }}
+        {% endfor %}
+    </p>
 {% endblock content %}
+

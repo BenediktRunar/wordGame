@@ -1,5 +1,6 @@
-# Created by https://www.gitignore.io/api/flask,python
-# Edit at https://www.gitignore.io/?templates=flask,python
+
+# Created by https://www.gitignore.io/api/macos,flask,python,windows
+# Edit at https://www.gitignore.io/?templates=macos,flask,python,windows
 
 ### Flask ###
 instance/*
@@ -130,6 +131,34 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+### macOS ###
+# General
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Icon must end with two \r
+Icon
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
 ### Python ###
 # Byte-compiled / optimized / DLL files
 
@@ -185,7 +214,29 @@ dmypy.json
 
 # Pyre type checker
 
-#Ignore these files -BRV
-.idea/
+### Windows ###
+# Windows thumbnail cache files
+Thumbs.db
+ehthumbs.db
+ehthumbs_vista.db
 
-# End of https://www.gitignore.io/api/flask,python
+# Dump file
+*.stackdump
+
+# Folder config file
+[Dd]esktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows Installer files
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+
+# Windows shortcuts
+*.lnk
+
+# End of https://www.gitignore.io/api/macos,flask,python,windows

@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from letters import *
 app = Flask(__name__)
 
 @app.route("/home")
@@ -12,7 +13,9 @@ def TwoPlayer():
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
-    return render_template('playerVsComputer.html', title='P vs Ai')
+
+    lettersChosen = letters()
+    return render_template('playerVsComputer.html', title='P vs Ai', letters = lettersChosen)
 
 if __name__ == '__main__':
     app.run(debug=True)
