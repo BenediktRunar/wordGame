@@ -1,9 +1,11 @@
 from flask import Flask, render_template
+import letters
 app = Flask(__name__)
 
 @app.route("/home")
 @app.route("/")
 def home():
+    print('<p>letters</p>')
     return render_template('home.html')
 
 @app.route("/twoPlayer")
