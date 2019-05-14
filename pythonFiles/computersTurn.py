@@ -19,4 +19,3 @@ def computersTurn(letters):
             return rand
     except FileNotFoundError:
         print('file not found')
-
