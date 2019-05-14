@@ -29,6 +29,7 @@ def score_of_letter(letter):
 
 
 def score_of_word(word):
+
     # Every letter in the word is evaluated in score_of_letter and the value is stored in a list
-    # We then calculate the sum of that list and return it
-    return sum([score_of_letter(letter) for letter in word])
+    # We then calculate the sum of that list and return it as a string
+    return str(sum(int(score_of_letter(letter.upper())) for letter in word))
