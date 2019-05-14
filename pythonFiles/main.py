@@ -19,7 +19,7 @@ def TwoPlayer():
 @app.route("/playerVsComputer")
 def playerVsComputer():
     # List of tuples with random letters and their corresponding value
-    randLetters = get_rand_letters()
+    randLetters = get_rand_english_letters()
     # List of the random letters
     randLettersList = [i[0] for i in randLetters]
     # The random letters in a string
@@ -27,7 +27,7 @@ def playerVsComputer():
     randPcString = computers_turn(randLettersString)
 
     # Get value of word
-    wordScore = score_of_word(computers_turn(randPcString))
+    wordScore = score_of_english_word(computers_turn(randPcString))
 
     return render_template('playerVsComputer.html', l=randLetters, word=randPcString, wordScore=wordScore, title='P vs Ai')
 

@@ -1,6 +1,6 @@
 import random
 
-def get_rand_letters():
+def get_rand_english_letters():
     randLettersList = []
 
     lettersList = (
@@ -15,7 +15,7 @@ def get_rand_letters():
         randLetter = random.choice(list(lettersList))
 
         # Append a tuple of (random letter, score of letter) to the random Letters List
-        randLettersList.append(tuple((randLetter, score_of_letter(randLetter))))
+        randLettersList.append(tuple((randLetter, score_of_english_letter(randLetter))))
     return randLettersList
 
 def get_rand_icelandic_letter():
@@ -41,9 +41,7 @@ def score_of_icelandic_letter(letter):
                 'Ý':'5', 'D':'5', 'P':'5', 'B':'5', 'J':'6', 'Y':'6', 'Ö':'6', 'É':'7', 'Þ':'7', 'X':'10'}
     return scores.get(letter)
 
-print(get_rand_icelandic_letter())
-
-def score_of_letter(letter):
+def score_of_english_letter(letter):
     # dictionary with all the letters and their corresponding value
     scores = {'A': '1', 'B': '3', 'C': '3', 'D': '2', 'E': '1', 'F': '4', 'G': '2', 'H': '4', 'I': '1', 'J': '8',
               'K': '5', 'L': '1', 'M': '3', 'N': '1', 'O': '1', 'P': '3', 'Q': '10', 'R': '1', 'S': '1', 'T': '1',
@@ -51,12 +49,11 @@ def score_of_letter(letter):
     return scores.get(letter)
 
 def score_of_icelandic_word(word):
-    # Every letter in the word is evaluated in score_of_letter and the value is stored in a list
+    # Every letter in the word is evaluated in score_of_english_letter and the value is stored in a list
     # We then calculate the sum of that list and return it
-    return sum([score_of_icelandic_letter(letter) for letter in word])
+    return str(sum(int(score_of_icelandic_letter(letter.upper())) for letter in word))
 
-def score_of_word(word):
-
-    # Every letter in the word is evaluated in score_of_letter and the value is stored in a list
+def score_of_english_word(word):
+    # Every letter in the word is evaluated in score_of_english_letter and the value is stored in a list
     # We then calculate the sum of that list and return it as a string
-    return str(sum(int(score_of_letter(letter.upper())) for letter in word))
+    return str(sum(int(score_of_english_letter(letter.upper())) for letter in word))

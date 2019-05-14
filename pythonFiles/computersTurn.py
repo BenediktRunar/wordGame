@@ -16,7 +16,8 @@ def computers_turn(letters):
                         flag = 0
                         break
                 if flag == 1:
-                    possibleWords.append(word) 
+                    if len(word) >= 5:
+                        possibleWords.append(word) 
             rand = random.choice(possibleWords) 
             return rand
     except FileNotFoundError:
