@@ -27,10 +27,9 @@ def playerVsComputer():
     randPcString = computers_turn(randLettersString)
 
     # Get value of word
-    wordScore = score_of_english_word(computers_turn(randPcString))
+    wordScore = score_of_english_word(randPcString)
 
     return render_template('playerVsComputer.html', l=randLetters, word=randPcString, wordScore=wordScore, title='P vs Ai')
-
 
 if __name__ == '__main__':
     app.run(debug=True)
