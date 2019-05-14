@@ -23,9 +23,13 @@ def playerVsComputer():
     # List of the random letters
     randLettersList = [i[0] for i in randLetters]
     # The random letters in a string
-    randLettersString = computersTurn((''.join(randLettersList)).lower())
+    randLettersString = (''.join(randLettersList)).lower()
+    randPcString = computers_turn(randLettersString)
 
-    return render_template('playerVsComputer.html', l=randLetters, word=randLettersString, title='P vs Ai')
+    # Get value of word
+    wordScore = score_of_word(computers_turn(randPcString))
+
+    return render_template('playerVsComputer.html', l=randLetters, word=randPcString, wordScore=wordScore, title='P vs Ai')
 
 
 if __name__ == '__main__':

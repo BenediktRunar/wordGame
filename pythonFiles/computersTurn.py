@@ -1,5 +1,7 @@
 import random
-def computersTurn(letters):
+
+
+def computers_turn(letters):
     try:
         with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
             words = f.read().split()
