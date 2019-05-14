@@ -1,0 +1,48 @@
+/*Fancty styles*/
+*{
+    margin: 0;
+    padding: 0;
+}
+html {
+    height: 100%;
+    min-height: 100%;
+}
+body{
+    background-color: lightpink;
+}
+#container{
+    background-color: lightpink;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+}
+.gameContainer{
+    background-color: cornflowerblue;
+    width: 1200px;
+    height:  700px;
+    margin: 0 auto;
+    align-items: stretch;
+}
+.letterBump{
+    margin-top:-20px;
+}
+#lettersField{
+    background-color: lightblue;
+}
+#lettersContainer{
+    border-style: solid;
+}
+
+.letterBox{
+    width: 80px;
+    height: 75px;
+    background-color: greenyellow;
+    float: left;
+    border-style: solid;
+    text-align: center;
+}
+
+

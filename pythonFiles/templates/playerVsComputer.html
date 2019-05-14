@@ -1,11 +1,25 @@
 {% extends "layout.html" %}
+
 {% block content %}
-    <h3>letters Chosen: </h3>
-    <ul>
-        {% for letter in letters %}
-            <li>{{ letter }}</li>    
-        {% endfor %}
-    </ul>
+    <div class="gameContainer">
+        <div class="lettersField">
+            <h3>letters Chosen: </h3>
+            <p>test</p>
+        </div>
+        <div id="lettersContainer">
+                {% for letter in letters %}
+                    <div class="letterBox">
+                    <h1>
+                        {{ letter[0] }}
+                    </h1>
+                        {%   if letter[0] != ' ' %}
+                        <p>
+                            {{ letter[1] }}
+                        </p>
+                        {% endif %}
+                    </div>
+                {% endfor %}
+        </div>
+    </div>
 {% endblock content %}
 
-git status
