@@ -1,7 +1,9 @@
 from flask import Flask, render_template, url_for
 from letters import *
 from computersTurn import *
+
 app = Flask(__name__)
+
 
 @app.route("/home")
 @app.route("/")
@@ -16,11 +18,15 @@ def TwoPlayer():
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
+    # List of tuples with random letters and their corresponding value
+    randLetters = get_rand_letters()
+    # List of the random letters
+    randLettersList = [i[0] for i in randLetters]
+    # The random letters in a string
+    randLettersString = computersTurn((''.join(randLettersList)).lower())
 
-    l = letters()
-    temp = [i[0] for i in l]
-    w = computersTurn((''.join(temp)).lower())
-    return render_template('playerVsComputer.html', l = l, word = w, title='P vs Ai')
+    return render_template('playerVsComputer.html', l=randLetters, word=randLettersString, title='P vs Ai')
+
 
 if __name__ == '__main__':
     app.run(debug=True)
