@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for
 from letters import *
 from computersTurn import *
+
 app = Flask(__name__)
 
 @app.route("/home")
