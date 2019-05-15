@@ -1,4 +1,18 @@
 {% extends "layout.html" %}
+
 {% block content %}
-    <h1>hEiMa</h1>
-{% endblock content %}
+    <div style="margin: auto;" >
+        <h1> Scrabble Scrambler 1.0 </h1>
+        <h2>Welcome to The world of Scrabble!</h2>
+        
+    <form id ="homeTitle">
+        <input type="radio" name="language" value="english"> English<br>
+        <input type="radio" name="language" value="icelandic"> Icelandic<br>
+        <p>hello</p>
+        <input type="radio" name="game" value="twoPlayer"> Two Player<br>
+        <input type="radio" name="game" value="playerVsComputer"> Player Vs Computer<br>
+
+        <input type="submit" value="submit">
+    </form>
+    </div>
+{% endblock content %} 

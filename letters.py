@@ -16,7 +16,6 @@ def get_rand_english_letters(language):
             'T', 'T', 'T', 'T', 'U', 'U', 'U', 'U', 'U', 'U', 'L', 'L', 'L', 'L', 'L', 'K', 'K', 'K', 'K', 'Ð', 'Ð', 
             'Ð', 'Ð', 'M', 'M', 'M', 'E', 'E', 'E', 'F', 'F', 'F', 'G', 'G', 'G', 'Ó', 'Ó', 'Á', 'Á', 'Æ', 'Æ', 'Í', 
             'U', 'H', 'V', 'O', 'Ý', 'D', 'P', 'B', 'J', 'Y', 'Ö', 'É', 'Þ', 'X')
-
     for i in range(10):
         # Get a random letter from lettersList
         randLetter = random.choice(list(lettersList))

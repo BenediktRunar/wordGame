@@ -31,7 +31,10 @@ body{
     float: left;
 }
 #lettersContainer{
-    margin-left: 15%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
 }
 
 .letterBox{
@@ -61,4 +64,6 @@ body{
     text-align: center;
 }
 
-
+#homeTitle{
+    margin: auto;
+}
