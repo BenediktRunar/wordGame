@@ -3,7 +3,7 @@ from letters import *
 from computersTurn import *
 
 app = Flask(__name__)
-
+language = 'icelandic'
 
 @app.route("/home")
 @app.route("/")
@@ -19,15 +19,15 @@ def TwoPlayer():
 @app.route("/playerVsComputer")
 def playerVsComputer():
     # List of tuples with random letters and their corresponding value
-    randLetters = get_rand_english_letters()
+    randLetters = get_rand_english_letters(language)
     # List of the random letters
     randLettersList = [i[0] for i in randLetters]
     # The random letters in a string
     randLettersString = (''.join(randLettersList)).lower()
-    randPcString = computers_turn(randLettersString)
+    randPcString = computers_turn(randLettersString, language)
 
     # Get value of word
-    wordScore = score_of_english_word(randPcString)
+    wordScore = score_of_english_word(randPcString, language)
 
     return render_template('playerVsComputer.html', l=randLetters, word=randPcString, wordScore=wordScore, title='P vs Ai')
 
