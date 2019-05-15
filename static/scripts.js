@@ -1,5 +1,8 @@
 $(document).ready(function() {
-
+    var hre = document.getElementById("submit")
+    var baseUrl = hre.getAttribute('href')
+    
+    console.log(baseUrl)
     console.log("script connected");
 
     var strLen = 0;
@@ -9,9 +12,9 @@ $(document).ready(function() {
     var gameBoard = gameField.find()
     var outputField = gameField.find('span.output');
 
+    
 
     $('.letterBox').on('click', function(event) {
-
         var squareSelected = $(this);
         var letterInBox = squareSelected.find('h1')[0].innerText;
         console.log(letterInBox);
@@ -40,16 +43,16 @@ $(document).ready(function() {
                   i++;
                 //at the end i will contain the index.
             * */
+
         };
         gameField.append(letter);
+        console.log("base:" + baseUrl,strOut)
+        hre.setAttribute("href", baseUrl + strOut)
     });
-
+    
     function changeOut(){
         //console.log(outputField);
         //console.log(strLen + ", " +strOut);
         outputField[0].innerHTML = strLen + ", \"" +strOut+"\"";
     }
-
-
-
 });
