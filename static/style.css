@@ -52,5 +52,13 @@ body{
     height: 25%;
     background-color: lightblue;
 }
+.chosenLetter{
+    background-color: lightgreen;
+    width: 30px;
+    height: 30px;
+    border: solid;
+    float: left;
+    text-align: center;
+}
 
 
