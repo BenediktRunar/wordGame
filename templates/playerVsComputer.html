@@ -29,14 +29,11 @@
                             </p>
                             {% endif %}
                         </div>
-                        <div style="display: none; float: left">
-                            {%  print(loop.index - 1) %}
-                            {% print(l[loop.index - 1]) %}
-                        </div>
+
                 {% endfor %}
             </div>
         </div>
-        <a href= "{{hre}}"  >Submit</a>
+        <a id="submit"  href="{{hre}}">Submit</a>
     </div>
 {% endblock content %}
 

@@ -1,5 +1,8 @@
 $(document).ready(function() {
-
+    var hre = document.getElementById("submit")
+    var baseUrl = hre.getAttribute('href')
+    
+    console.log(baseUrl)
     console.log("script connected");
 
     var strLen = 0;
@@ -9,9 +12,9 @@ $(document).ready(function() {
     var gameBoard = gameField.find('div.gameBoard');
     var outputField = gameField.find('span.output');
 
+    
 
     $('.letterBox').on('click', function(event) {
-
         var squareSelected = $(this);
         var letterInBox = squareSelected.find('h1')[0].innerText;
         console.log(letterInBox);
@@ -21,10 +24,9 @@ $(document).ready(function() {
         letter.className = "chosenLetter";
         letter.textContent = letterInBox;
         changeOut();
+
         letter.onclick = (e) => {
-
             var childIndex = -1;
-
             var thisChild = e.target;
             while((thisChild = thisChild.previousSibling) != null) {childIndex++;}
 
@@ -37,12 +39,16 @@ $(document).ready(function() {
 
         };
         gameBoard.append(letter);
-    });
 
+        console.log("base:" + baseUrl,strOut)
+        hre.setAttribute("href", baseUrl + strOut)
+    });
+    
     function changeOut(){
         outputField[0].innerHTML = strLen + ", \"" +strOut+"\"";
     }
 
-
-
+    function getOutput(){
+        return strOut;
+    }
 });

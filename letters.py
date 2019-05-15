@@ -40,3 +40,26 @@ def score_of_english_word(word, language):
     # We then calculate the sum of that list and return it as a string
     return str(sum(int(score_of_english_letter(letter.upper(), language)) for letter in word))
 
+def check_if_valid(word, language):
+    words = []
+    try:
+        if language == "english":
+            with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
+                words = f.read().split()
+        else:
+            with open('./dictionary/icelandicWords.txt', 'r', encoding='UTF-8') as f:
+                words = f.read().split() 
+    except FileNotFoundError:
+        print('file not found')
+    finally:
+        if word in words:
+            return True
+        else:
+            return False
+
+def string_to_tuple(letters, language):
+    temp = []
+    for i in letters:
+        i = i.upper()
+        temp.append(tuple((i, score_of_english_letter(i, language))))
+    return temp

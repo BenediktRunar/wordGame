@@ -27,24 +27,43 @@ def TwoPlayer():
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
+    userWord = request.args.get('userWord')
     language = request.args.get('language')
-    turn = request.args.get('turn')
-    if turn == '1':
-        turn = '2'
+    randLettersString = request.args.get('randLettersString')
+
+    if userWord and userWord != 'invalidUserWord':
+        userWord = userWord.lower()
+        print(userWord)
+        if check_if_valid(userWord, language):
+            score = score_of_english_word(userWord, language)
+            print(score)
+        else:
+            return redirect("/playerVsComputer?language=" + language + "&randLettersString=" + randLettersString + '&userWord=invalidUserWord')
+    
+    if userWord != 'invalidUserWord':
+        # List of tuples with random letters and their corresponding value
+        randLetters = get_rand_english_letters(language)
+        # List of the random letters
+        randLettersList = [i[0] for i in randLetters]
+        randLettersString = (''.join(randLettersList)).lower()
     else:
-        turn = '1'
-    print(turn)
+        randLetters = string_to_tuple(randLettersString, language)
+
+    hre = "/playerVsComputer?language=" + language + "&randLettersString=" + randLettersString + '&userWord='
+
+    
+    ##Computers turn
     # List of tuples with random letters and their corresponding value
-    randLetters = get_rand_english_letters(language)
+    randLettersForComputer = get_rand_english_letters(language)
     # List of the random letters
-    randLettersList = [i[0] for i in randLetters]
+    randLettersListForComputer = [i[0] for i in randLettersForComputer]
     # The random letters in a string
-    randLettersString = (''.join(randLettersList)).lower()
+    randLettersString = (''.join(randLettersListForComputer)).lower()
     randPcString = computers_turn(randLettersString, language)
     # Get value of word
     wordScore = score_of_english_word(randPcString, language)
-    hre = "/playerVsComputer?turn=" + turn + "&language=" + language
-    return render_template('playerVsComputer.html', l=randLetters, word=randPcString, wordScore=wordScore, title='P vs Ai', hre = hre)
+    # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
+    return render_template('playerVsComputer.html', l=randLetters, title='P vs Ai', hre = hre)
 
 if __name__ == '__main__':
     app.run(debug=True)
