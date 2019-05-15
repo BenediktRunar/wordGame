@@ -32,7 +32,6 @@ $(document).ready(function() {
             strOut = strOut.slice(0, childIndex) + strOut.slice(childIndex+1);
             $(e.target).remove();
 
-
             strLen--;
             changeOut();
 
