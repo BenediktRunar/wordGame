@@ -24,20 +24,21 @@ $(document).ready(function() {
         letter.className = "chosenLetter";
         letter.textContent = letterInBox;
         changeOut();
+        squareSelected = event.currentTarget;
+        squareSelected.setAttribute("style", "visibility: hidden");
 
         letter.onclick = (e) => {
             var childIndex = -1;
             var thisChild = e.target;
             while((thisChild = thisChild.previousSibling) != null) {childIndex++;}
-
+            squareSelected.setAttribute("style", "visibility: block");
             console.log(childIndex);
             strOut = strOut.slice(0, childIndex) + strOut.slice(childIndex+1);
             $(e.target).remove();
-
             strLen--;
             changeOut();
-
         };
+
         gameBoard.append(letter);
 
         console.log("base:" + baseUrl,strOut)

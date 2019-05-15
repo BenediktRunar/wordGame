@@ -8,7 +8,7 @@ html {
     min-height: 100%;
 }
 body{
-    background-color: lightpink;
+    background-color: whitesmoke;
 }
 #container{
     position: absolute;
@@ -19,10 +19,13 @@ body{
     display: table;
 }
 .gameContainer{
-    background-color: lavender;
-    width: 1200px;
-    height:  700px;
+    width: 1000px;
+    height:  600px;
     margin: 0 auto;
+}
+.gameBoard{
+    display: flex;
+    justify-content: center;
 }
 #lettersField{
     width: 1100px;
@@ -40,7 +43,7 @@ body{
 .letterBox{
     width: 80px;
     height: 75px;
-    background-color: greenyellow;
+    background-color: lightyellow;
     float: left;
     border-style: solid;
     text-align: center;
@@ -48,20 +51,22 @@ body{
 .box1{
     width: 100%;
     height: 75%;
-    background-color: lightsalmon;
+    background-color: lightblue;
 }
 .box2{
     width: 100%;
     height: 25%;
-    background-color: lightblue;
+    background-color: dodgerblue;
 }
 .chosenLetter{
-    background-color: lightgreen;
-    width: 30px;
-    height: 30px;
+    background-color: lemonchiffon;
+    width: 45px;
+    height: 40px;
     border: solid;
     float: left;
     text-align: center;
+    font-weight: bold;
+    font-size: 30px;
 }
 
 #homeTitle{
