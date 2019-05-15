@@ -6,7 +6,7 @@ $(document).ready(function() {
     var strOut = "";
 
     var gameField = $('div.gameContainer').find('div.box1');
-    var gameBoard = gameField.find()
+    var gameBoard = gameField.find('div.gameBoard');
     var outputField = gameField.find('span.output');
 
 
@@ -23,30 +23,24 @@ $(document).ready(function() {
         changeOut();
         letter.onclick = (e) => {
 
-            var thisLetter = $(e);
-            //console.log("blablabla: " + e);
-            //console.log(gameField);
-            console.log(thisLetter);
-            var childIndex = 0;
+            var childIndex = -1;
 
-            console.log(e.target);
+            var thisChild = e.target;
+            while((thisChild = thisChild.previousSibling) != null) {childIndex++;}
+
+            console.log(childIndex);
+            strOut = strOut.slice(0, childIndex) + strOut.slice(childIndex+1);
             $(e.target).remove();
-            $(thisLetter).remove();
+
+
             strLen--;
             changeOut();
-            /*
-            * var i = 0;
-                while( (child = child.previousSibling) != null )
-                  i++;
-                //at the end i will contain the index.
-            * */
+
         };
-        gameField.append(letter);
+        gameBoard.append(letter);
     });
 
     function changeOut(){
-        //console.log(outputField);
-        //console.log(strLen + ", " +strOut);
         outputField[0].innerHTML = strLen + ", \"" +strOut+"\"";
     }
 
