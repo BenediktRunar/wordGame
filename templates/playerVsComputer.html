@@ -6,31 +6,34 @@
         <div class="box1">
             <h3>letters Chosen: </h3>
             <!-- Testing -->
-            <p>test</p>
+            <h3 style="font-weight: bold">Output</h3>
+            <span style="float:left" class="output">0, ""</span>
+            <br />
             <p>{{word}}</p>
             <p>{{wordScore}}</p>
             <!-- Testing -->
+            <div class="gameBoard">
+
+            </div>
         </div>
         <div class="box2">
-        <div id="lettersContainer">
-            {% for letter in l %}
-                    <div class="letterBox">
-                    <h1>
-                        {{ letter[0] }}
-                    </h1>
-                        {%   if letter[0] != ' ' %}
-                        <p>
-                            {{ letter[1] }}
-                        </p>
-                        {% endif %}
-                    </div>
-                    <div style="display: none; float: left">
-                        {%  print(loop.index - 1) %}
-                        {% print(l[loop.index - 1]) %}
-                    </div>
+            <div id="lettersContainer">
+                {% for letter in l %}
+                        <div class="letterBox">
+                        <h1>
+                            {{ letter[0] }}
+                        </h1>
+                            {%   if letter[0] != ' ' %}
+                            <p>
+                                {{ letter[1] }}
+                            </p>
+                            {% endif %}
+                        </div>
+
                 {% endfor %}
+            </div>
         </div>
-        </div>
+        <a id="submit"  href="{{hre}}">Submit</a>
     </div>
 {% endblock content %}
 
