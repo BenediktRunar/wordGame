@@ -11,7 +11,7 @@ def PlayerTurn(userWord, language, randLettersString, turn, game):
             score = score_of_word(userWord, language)
         else:
             return  game + "?language=" + language + "&randLettersString=" + randLettersString + '&userWord=invalidUserWord'
-    # If the word before is correct
+    # If the word-before is correct
     if userWord != 'invalidUserWord':
         # List of tuples with random letters and their corresponding value
         randLetters = get_rand_letters(language)
@@ -41,7 +41,5 @@ def getUrl(game, turn, language, randLettersString):
             turn = '2'  
         else:
             turn = '1'
-        url += '&turn=' + turn + '&userWord='
-    else:
-        url += '&userWord='
+        url += '&turn=' + turn
     return url

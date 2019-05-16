@@ -53,7 +53,12 @@
                 {% endfor %}
             </div>
         </div>
-        <a id="submit"  href="{{hre}}">Submit</a>
+        <form action="{{hre}}" method="POST">
+            <input type="hidden" name="userWord" value="gaur" >
+            <input type="submit" value="Submit">
+        </form>
+        <button method="POST">POST</button>
+        <a id="submit" method="POST" href="{{hre}}" >Submit</a>
     </div>
 {% endblock content %}
 

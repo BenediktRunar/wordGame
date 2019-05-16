@@ -60,6 +60,7 @@ $(document).ready(function() {
 
         // changing the href attrinbute
         hre.setAttribute("href", baseUrl + strOut)
+        //console.log("here: " + hre.getAttribute('href'))
     });
 
     function changeOut(n){

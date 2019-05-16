@@ -43,10 +43,14 @@ def TwoPlayer():
         # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
         return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[2])
 
-@app.route("/playerVsComputer")
+@app.route("/playerVsComputer", methods = ['GET','POST'])
 def playerVsComputer():
     # Getting information from url
-    userWord = request.args.get('userWord')
+    if request.method == 'POST':
+        userWord = request.form['userWord']
+    else:
+        userWord = None
+    print("halloooo",userWord)
     language = request.args.get('language')
     randLettersString = request.args.get('randLettersString')
     game = "/playerVsComputer"
