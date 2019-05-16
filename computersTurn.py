@@ -1,8 +1,9 @@
 import random
+from letters import *
 
-
-def computers_turn(letters, language):
+def getting_random_word_for_computer(letters, language):
     try:
+        # Getting list of words
         if language == "english":
             with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
                 words = f.read().split()
@@ -13,17 +14,35 @@ def computers_turn(letters, language):
         print('file not found')
     finally:
         possibleWords = []
+        # Find possible words
         for word in words:
-            flag = 1
+            # Valid word, until proofing guilty
+            validWord = 1
+            # Getting the random letters
             checker = list(letters)
             for x in word:
                 if x in checker:
                     checker.remove(x)
                 else:
-                    flag = 0
+                    validWord = 0
                     break
-            if flag == 1:
+            if validWord == 1:
+                # Filtering words, shorter than 5 letters
                 if len(word) >= 5:
-                    possibleWords.append(word) 
+                    possibleWords.append(word)
+        # Choosing random word from list
         rand = random.choice(possibleWords) 
         return rand
+
+def computers_turn(language):
+    ##Computers turn
+    # List of tuples with random letters and their corresponding value
+    randLettersForComputer = get_rand_letters(language)
+    # List of the random letters
+    randLettersListForComputer = [i[0] for i in randLettersForComputer]
+    # The random letters in a string
+    randLettersString = (''.join(randLettersListForComputer)).lower()
+    word = getting_random_word_for_computer(randLettersString, language)
+    # Get value of word
+    wordScore = score_of_word(word, language)
+    return wordScore, word
