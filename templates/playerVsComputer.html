@@ -5,6 +5,12 @@
     <div class="gameContainer">
         <div class="box1">
             <div class="scoreBoard">
+                {% if score %}
+                    <script type="text/javascript">
+                        printScore({{ score }}, document.URL);
+                    </script>
+
+                {% endif %}
                 <table class="gameScore" style="width: 100%; text-align: center">
                   <tr>
                     <th>Player1</th>
@@ -14,23 +20,10 @@
                     <td>0</td>
                     <td>0</td>
                   </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
-                  <tr>
-                    <td>0</td>
-                    <td>0</td>
-                  </tr>
                 </table>
+                <ul class="gameWords" style="margin: 25px">
+
+                </ul>
             </div>
             <h3>letters Chosen: </h3>
             <!-- Testing -->

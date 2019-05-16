@@ -18,6 +18,15 @@ body{
     width: 100%;
     display: table;
 }
+.homeScreen{
+    margin: 50px auto;
+    text-align: center;
+    color: whitesmoke;
+    padding-top: 80px;
+    width: 400px;
+    height: 250px;
+    background-color: darkslateblue;
+}
 .gameContainer{
     width: 1000px;
     height:  600px;

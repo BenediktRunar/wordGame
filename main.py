@@ -41,7 +41,7 @@ def TwoPlayer():
         return redirect(infoFromTurn) 
     else:
         # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
-        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[3])
+        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[2])
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
@@ -57,7 +57,7 @@ def playerVsComputer():
         return redirect(infoFromTurn) 
     else:
         # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
-        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[3])
+        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[2])
 
 if __name__ == '__main__':
     app.run(debug=True)

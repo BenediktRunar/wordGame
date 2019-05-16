@@ -3,6 +3,7 @@ from computersTurn import *
 
 def PlayerTurn(userWord, language, randLettersString, turn, game):
         # Check if former word is valid
+    score = 0
     if userWord and userWord != 'invalidUserWord':
         userWord = userWord.lower()
         if check_if_valid(userWord, language):
