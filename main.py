@@ -1,6 +1,7 @@
 from flask import Flask, render_template, url_for, request, redirect
 from letters import *
 from computersTurn import *
+from game import *
 
 app = Flask(__name__)
 
@@ -24,40 +25,6 @@ def routingToGame():
     # Redirect to correct site, making turn = 1 so you start your turn
     return redirect(temp) 
 
-def testtt(userWord, language, randLettersString, turn, game):
-        # Check if former word is valid
-    if userWord and userWord != 'invalidUserWord':
-        userWord = userWord.lower()
-        if check_if_valid(userWord, language):
-            score = score_of_word(userWord, language)
-        else:
-            return  game + "?language=" + language + "&randLettersString=" + randLettersString + '&userWord=invalidUserWord'
-    # If the word before is correct
-    if userWord != 'invalidUserWord':
-        # List of tuples with random letters and their corresponding value
-        randLetters = get_rand_letters(language)
-        # List of the random letters
-        randLettersList = [i[0] for i in randLetters]
-        # random letters from tuple to string
-        randLettersString = (''.join(randLettersList)).lower()
-        # If there is a word to check on
-
-        if game == "/playerVsComputer" and userWord != None:
-            compWor = computers_turn(language)
-    else:
-        # Getting the last letters, making them into tuple
-        randLetters = string_to_tuple(randLettersString, language)
-
-    hre = game + "?language=" + language + "&randLettersString=" + randLettersString + '&userWord='
-    if game == "/twoPlayer":
-        print("halllllo")
-        if turn == '1':
-            turn = '2'  
-        else:
-            turn = '1'
-        hre = game + "?language=" + language + "&randLettersString=" + randLettersString + '&turn=' + turn + '&userWord='
-    return hre, randLetters
-
 # Game: Two player
 @app.route("/twoPlayer")
 def TwoPlayer():
@@ -68,13 +35,13 @@ def TwoPlayer():
     turn = request.args.get('turn')
     game = "/twoPlayer"
 
-    testst = testtt(userWord, language, randLettersString, turn, game)
+    infoFromTurn = PlayerTurn(userWord, language, randLettersString, turn, game)
 
-    if type(testst) == str:
-        return redirect(testst) 
+    if type(infoFromTurn) == str:
+        return redirect(infoFromTurn) 
     else:
         # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
-        return render_template('playerVsComputer.html', l=testst[1], title='P vs Ai', hre = testst[0])
+        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[3])
 
 @app.route("/playerVsComputer")
 def playerVsComputer():
@@ -84,13 +51,13 @@ def playerVsComputer():
     randLettersString = request.args.get('randLettersString')
     game = "/playerVsComputer"
 
-    testst = testtt(userWord, language, randLettersString, 0, game)
+    infoFromTurn = PlayerTurn(userWord, language, randLettersString, '0', game)
 
-    if type(testst) == str:
-        return redirect(testst) 
+    if type(infoFromTurn) == str:
+        return redirect(infoFromTurn) 
     else:
         # print("letters: ", randLettersListForComputer, " word: ", randPcString, " score: ", wordScore)
-        return render_template('playerVsComputer.html', l=testst[1], title='P vs Ai', hre = testst[0])
+        return render_template('playerVsComputer.html', l=infoFromTurn[1], title='P vs Ai', hre = infoFromTurn[0], score = infoFromTurn[3])
 
 if __name__ == '__main__':
     app.run(debug=True)
