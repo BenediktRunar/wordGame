@@ -4,12 +4,16 @@ from letters import *
 def getting_random_word_for_computer(letters, language):
     try:
         # Getting list of words
-        if language == "english":
-            with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
-                words = f.read().split()
-        else:
+        if language == "icelandic":
             with open('./dictionary/icelandicWords.txt', 'r', encoding='UTF-8') as f:
                 words = f.read().split() 
+        elif language == "danish":
+            with open('./dictionary/danishhWords.txt', 'r', encoding='UTF-8') as f:
+                words = f.read().split()
+        else:
+            with open('./dictionary/englishWords.txt', 'r', encoding='UTF-8') as f:
+                words = f.read().split()
+            
     except FileNotFoundError:
         print('file not found')
     finally:

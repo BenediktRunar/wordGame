@@ -2,6 +2,7 @@ from letters import *
 from computersTurn import *
 
 def PlayerTurn(userWord, language, randLettersString, turn, game):
+    score = 0
         # Check if former word is valid
     score = 0
     if userWord and userWord != 'invalidUserWord':
@@ -26,7 +27,13 @@ def PlayerTurn(userWord, language, randLettersString, turn, game):
         # Getting the last letters, making them into tuple
         randLetters = string_to_tuple(randLettersString, language)
 
-    hre = game + "?language=" + language + "&randLettersString=" + randLettersString
+    url = getUrl(game, turn, language, randLettersString)
+
+    return url, randLetters, score
+
+
+def getUrl(game, turn, language, randLettersString):
+    url = game + "?language=" + language + "&randLettersString=" + randLettersString
     
     if game == "/twoPlayer":
         print("halllllo")
@@ -34,7 +41,7 @@ def PlayerTurn(userWord, language, randLettersString, turn, game):
             turn = '2'  
         else:
             turn = '1'
-        hre += '&turn=' + turn + '&userWord='
+        url += '&turn=' + turn + '&userWord='
     else:
-        hre += '&userWord='
-    return hre, randLetters, score
+        url += '&userWord='
+    return url
