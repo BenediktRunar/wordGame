@@ -1,12 +1,11 @@
 $(document).ready(function() {
+    //Get existing url
     var hre = document.getElementById("submit");
     var baseUrl = hre.getAttribute('href');
+
     var gameField = $('div.gameContainer').find('div.box1');
     var strLen = 0;
     var strOut = "";
-
-    console.log(baseUrl)
-    console.log("script connected");
 
     $('.letterBox').on('click', function(event) {
 
@@ -35,8 +34,7 @@ $(document).ready(function() {
 
         gameField.find('div.gameBoard').append(letter);
 
-        console.log("base:" + baseUrl,strOut);
-
+        // changing the href attrinbute
         hre.setAttribute("href", baseUrl + strOut)
     });
     

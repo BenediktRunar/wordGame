@@ -5,8 +5,6 @@ class Square:
         self.value = scoreOfLetter(letter)
 
 
-
-
 # def playerVsComputer():
 #     language = request.args.get('language')
 #     turn = request.args.get('turn')

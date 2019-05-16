@@ -21,7 +21,7 @@ body{
 .gameContainer{
     width: 1000px;
     height:  600px;
-    margin: 0 auto;
+    margin: 15px auto 0;
 }
 .gameBoard{
     display: flex;
@@ -47,6 +47,13 @@ body{
     float: left;
     border-style: solid;
     text-align: center;
+}
+.scoreBoard{
+    width: 20%;
+    height: 100%;
+    float: left;
+    margin-right: 15px;
+    background-color: lavender;
 }
 .box1{
     width: 100%;
