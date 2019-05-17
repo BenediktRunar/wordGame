@@ -17,34 +17,29 @@
                     <th>Player1</th>
                     <th>Player2</th>
                   </tr>
-                  {%  for scorePairs in scoreForBaby.split(':')%}
-                  <tr>
-                        {% for score in scorePairs.split(',')%}
-                        <td>{{score}}</td>
-                        {% endfor %}
-                  </tr>
-                  {% endfor %}
+                  {% if scoreList %}
+                    {%  for scorePairs in scoreList.split(':')%}
+                    <tr>
+                            {% for score in scorePairs.split(',')%}
+                            <td>{{score}}</td>
+                            {% endfor %}
+                    </tr>
+                    {% endfor %}
+                  {% endif %}
                 </table>
-                <ul class="gameWords" style="margin: 25px">
+                <ul class="gameWords" style="margin: 25px; list-style: none">
                     {%  for word in wordList.split(':')%}
                     <li>{{word}}</li>
                     {% endfor %}
                 </ul>
             </div>
-            <h3>letters Chosen: </h3>
-            <!-- Testing -->
-            <h3 style="font-weight: bold">Output</h3>
-            <span style="float:left" class="output">0, ""</span>
-            <br />
-            <p>{{word}}</p>
-            <p>{{wordScore}}</p>
-            <!-- Testing -->
             <div class="gameBoard">
 
             </div>
         </div>
         <div class="box2">
             <div id="lettersContainer">
+
                 {% for letter in l %}
                         <div class="letterBox">
                         <h1>
@@ -61,15 +56,15 @@
         </div>
         
         <form action="{{url}}" method="POST">
-            <input type="hidden" name="scoreForBaby" value="{{scoreForBaby}}" >
+            <input type="hidden" name="scoreList" value="{{scoreList}}" >
             <input type="hidden" name="language" value="{{language}}" >
             <input type="hidden" name="randLettersString" value="{{randLettersString}}" >
             <input type="hidden" name="wordList" value="{{wordList}}" >
             <input type="submit" value="GIVE UP">
         </form>
 
-        <form action="/checkWord" method="POST">
-            <input type="hidden" name="scoreForBaby" value="{{scoreForBaby}}" >
+        <form action="/playerVsComputerGame" method="POST">
+            <input type="hidden" name="scoreList" value="{{scoreList}}" >
             <input type="hidden" id="test" name="userWord" value="" >
             <input type="hidden" name="language" value="{{language}}" >
             <input type="hidden" name="randLettersString" value="{{randLettersString}}" >
