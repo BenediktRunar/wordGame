@@ -46,6 +46,7 @@ def computers_turn(language):
     randLettersListForComputer = [i[0] for i in randLettersForComputer]
     # The random letters in a string
     randLettersString = (''.join(randLettersListForComputer)).lower()
+    
     word = getting_random_word_for_computer(randLettersString, language)
     # Get value of word
     print("computer word: " + word)
