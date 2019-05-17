@@ -32,10 +32,13 @@ def getting_random_word_for_computer(letters, language):
                     break
             if validWord == 1:
                 # Filtering words, shorter than 5 letters
-                if len(word) >= 5:
-                    possibleWords.append(word)
+                possibleWords.append(word)
         # Choosing random word from list
-        rand = random.choice(possibleWords) 
+        rand = ''
+        for i in range(5):
+            if rand:
+                rand += ':'
+            rand += random.choice(possibleWords) 
         return rand
 
 def computers_turn(language):
@@ -46,8 +49,9 @@ def computers_turn(language):
     randLettersListForComputer = [i[0] for i in randLettersForComputer]
     # The random letters in a string
     randLettersString = (''.join(randLettersListForComputer)).lower()
+
     word = getting_random_word_for_computer(randLettersString, language)
     # Get value of word
     print("computer word: " + word)
-    wordScore = score_of_word(word, language)
+    wordScore = score_of_word(word.replace(':', ''), language)
     return word, wordScore

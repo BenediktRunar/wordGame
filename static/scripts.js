@@ -11,21 +11,27 @@ function printScore(input, word){
 
     //var scoreField = $('div.gameContainer').find('div.box1').find('table.gameScore');
 
-    var wordField = $('div.gameContainer').find('div.box1').find('div.scoreBoard')[0].lastElementChild;
+    var wordField = $('div.gameContainer').find('div.scoreBoard');
     console.log(wordField);
 
-    //var wordField = $('div.gameContainer').find('div.box1');
-    //console.log(wordField);
-    //wordField.append("<li>" + lastWord + "</li>");
-    var newWord = document.createElement('li');
-    newWord.innerHTML = lastWord;
-    wordField.appendChild(newWord);
+    if (localStorage.getItem('words') == null){
+
+        wordList.push(word);
+    } else {
+        console.log(localStorage.getItem('words'));
+    }
+    localStorage.setItem( 'words', wordList );
+    console.log(wordList);
+
+    //var newWord = document.createElement('DIV');
+    //newWord.innerHTML = lastWord;
+    //console.log(newWord);
+    //wordField.append(newWord);
 }
 
 $(document).ready(function() {
     //Get existing url
-    var hre = document.getElementById("submit");
-    var baseUrl = hre.getAttribute('href');
+    var userWord = document.getElementById("userWord")
     var gameField = $('div.gameContainer').find('div.box1');
     var strOut = "";
     var strLen = 0;
@@ -57,19 +63,18 @@ $(document).ready(function() {
         };
 
         gameField.find('div.gameBoard').append(letter);
-
         // changing the href attrinbute
-        hre.setAttribute("href", baseUrl + strOut)
+        userWord.setAttribute("value", strOut)
     });
 
     function changeOut(n){
         strLen += n;
-        gameField.find('span.output')[0].innerHTML = strLen + ", \"" +strOut+"\"";
     }
 
     function getOutput(){
         return strOut;
     }
+
     function test(){
         console.log('function within ready scope');
     }
