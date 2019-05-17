@@ -1,6 +1,6 @@
 $(document).ready(function() {
     //Get existing url
-    var test = document.getElementById("test");
+    var userWord = document.getElementById("userWord")
     var gameField = $('div.gameContainer').find('div.box1');
     var strOut = "";
 
@@ -33,8 +33,7 @@ $(document).ready(function() {
 
         gameField.find('div.gameBoard').append(letter);
         // changing the href attrinbute
-        test.setAttribute("value", strOut);
-        //console.log("here: " + hre.getAttribute('href'))
+        userWord.setAttribute("value", strOut)
     });
 
 });

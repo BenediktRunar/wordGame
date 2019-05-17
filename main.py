@@ -64,26 +64,26 @@ def playerVsComputer():
         randLettersString = request.form['randLettersString']
         wordList = request.form['wordList']
         scoreList = request.form['scoreList']
-        
         score = score_of_word(wordList.replace(':', ''), language)
         #setja score í scoreforuser
         if scoreList:
             scoreList += ':'
         scoreList+= str(score)
+        
         #comp turn
-        compWor = computers_turn(language)
-        scoreList += ',' + str(compWor[1])
-
-
-        print(scoreList)
+        compWord = computers_turn(language)
+        scoreList += ',' + str(compWord[1])
+        compWord = compWord[0].upper()
     else:
+        compWord = ''
         scoreList=''
         userWord = None
         language = request.args.get('language')
         randLettersString = request.args.get('randLetterString')
     
     game = "/playerVsComputer"
-
+    if scoreList.count(',') == 5:
+        return redirect('/gameOver')
     randLetters = get_rand_letters(language)
     # random letters from tuple to string
     randLettersString = (''.join([i[0] for i in randLetters])).lower()
@@ -92,11 +92,13 @@ def playerVsComputer():
                                             language = language, 
                                             randLettersString = randLettersString
                                             ,wordList = ''
-                                            ,scoreList = scoreList)
+                                            ,scoreList = scoreList
+                                            ,compWord = compWord)
 
 @app.route("/playerVsComputerGame" , methods = ['GET','POST'])
 def check_word():
     if request.method == 'POST':
+        compWord = request.form['compWord']
         wordList = request.form['wordList']
         userWord = request.form['userWord']
         language = request.form['language']
@@ -107,7 +109,7 @@ def check_word():
     #TJEKKA HVORT AÐ ORÐIÐ SÉ VALDID
     word = ValidateWord(userWord, language, randLettersString)
     #EF VALID, SENDA ÞAÐ INN Í LISTA
-    if word != '' and word not in wordList:
+    if word != '' and word not in wordList.split(':'):
         if wordList != '':
             wordList += ':'
         wordList += word
@@ -119,8 +121,12 @@ def check_word():
                                             language = language, 
                                             randLettersString = randLettersString
                                             ,wordList = wordList
-                                            ,scoreList = scoreList)
+                                            ,scoreList = scoreList
+                                            ,compWord = compWord)
 
-    
+@app.route("/gameOver")
+def gameOver():
+    return render_template('gameOver.html', title='Game Over')
+
 if __name__ == '__main__':
     app.run(debug=True)
