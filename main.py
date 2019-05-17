@@ -28,6 +28,7 @@ def routingToGame():
 # Game: Two player
 @app.route("/twoPlayer", methods = ['GET','POST'])
 def TwoPlayer():
+    #url = getUrl(url, turn) 
     if request.method == 'POST':
         userWord = request.form['userWord']
         language = request.form['language']
@@ -62,21 +63,21 @@ def playerVsComputer():
         language = request.form['language']
         randLettersString = request.form['randLettersString']
         wordList = request.form['wordList']
-        scoreForBaby = request.form['scoreForBaby']
+        scoreList = request.form['scoreList']
         
         score = score_of_word(wordList.replace(':', ''), language)
         #setja score í scoreforuser
-        if scoreForBaby:
-            scoreForBaby += ':'
-        scoreForBaby+= str(score)
+        if scoreList:
+            scoreList += ':'
+        scoreList+= str(score)
         #comp turn
         compWor = computers_turn(language)
-        scoreForBaby += ',' + str(compWor[1])
+        scoreList += ',' + str(compWor[1])
 
 
-        print(scoreForBaby)
+        print(scoreList)
     else:
-        scoreForBaby='test'
+        scoreList=''
         userWord = None
         language = request.args.get('language')
         randLettersString = request.args.get('randLetterString')
@@ -86,23 +87,21 @@ def playerVsComputer():
     randLetters = get_rand_letters(language)
     # random letters from tuple to string
     randLettersString = (''.join([i[0] for i in randLetters])).lower()
-    print(scoreForBaby)
     return render_template('playerVsComputer.html', l=randLetters, 
                                             url = game,  
                                             language = language, 
                                             randLettersString = randLettersString
                                             ,wordList = ''
-                                            ,scoreForBaby = scoreForBaby)
+                                            ,scoreList = scoreList)
 
-
-@app.route("/checkWord" , methods = ['GET','POST'])
+@app.route("/playerVsComputerGame" , methods = ['GET','POST'])
 def check_word():
     if request.method == 'POST':
         wordList = request.form['wordList']
         userWord = request.form['userWord']
         language = request.form['language']
         randLettersString = request.form['randLettersString']
-        scoreForBaby = request.form['scoreForBaby']
+        scoreList = request.form['scoreList']
     else:
         print('VESEN')
     #TJEKKA HVORT AÐ ORÐIÐ SÉ VALDID
@@ -120,7 +119,7 @@ def check_word():
                                             language = language, 
                                             randLettersString = randLettersString
                                             ,wordList = wordList
-                                            ,scoreForBaby = scoreForBaby)
+                                            ,scoreList = scoreList)
 
     
 if __name__ == '__main__':

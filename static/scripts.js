@@ -72,7 +72,6 @@ $(document).ready(function() {
 
     function changeOut(n){
         strLen += n;
-        gameField.find('span.output')[0].innerHTML = strLen + ", \"" +strOut+"\"";
     }
 
     function getOutput(){

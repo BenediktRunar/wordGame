@@ -1,15 +1,6 @@
 from letters import *
 from computersTurn import *
 
-def PlayerTurn(userWord, language, turn, game, randLettersString):
-    url = game
-    ####### Það er ekkert orð eða orðið er rétt svo við initializum
-    # List of tuples with random letters and their corresponding value
-    randLetters = get_rand_letters(language)
-    #url = getUrl(url, turn) 
-    return url, randLetters
-
-
 def getUrl(url, turn):
     if url == "/twoPlayer":
         if turn == '1':
