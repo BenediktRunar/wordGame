@@ -9,11 +9,7 @@
         </script>
     <script src="{{url_for('static', filename='scripts.js')}}"></script>
 
-    {% if title %}
-        <title>{{ title }}</title>
-    {% else %}
-        <title>Python Project/</title>
-    {% endif %}
+    <title>{%  block title %}{% endblock %}</title>
 </head>
 <body>
     <div id="container">
