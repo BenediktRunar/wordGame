@@ -36,6 +36,9 @@ body{
     display: flex;
     justify-content: center;
 }
+.gameWords{
+    margin: 25px; list-style: none; width: 50%;
+}
 #lettersField{
     width: 1100px;
     height: 400px;
