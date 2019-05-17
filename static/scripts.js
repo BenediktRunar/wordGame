@@ -15,8 +15,7 @@ function printScore(input, word){
     console.log(wordField);
 
     if (localStorage.getItem('words') == null){
-
-        wordList.push(word);
+        wordList.push(lastWord);
     } else {
         console.log(localStorage.getItem('words'));
     }
