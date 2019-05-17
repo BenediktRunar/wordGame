@@ -1,13 +1,15 @@
 
 {% extends "layout.html" %}
 
+{%  block title %}p vs pc{% endblock %}
+
 {% block content %}
     <div class="gameContainer">
         <div class="box1">
             <div class="scoreBoard">
                 {% if score %}
                     <script type="text/javascript">
-                        printScore({{ score }}, document.URL);
+                        printScore({{score}}, document.URL);
                     </script>
 
                 {% endif %}
@@ -53,12 +55,13 @@
                 {% endfor %}
             </div>
         </div>
-        <form action="{{hre}}" method="POST">
-            <input type="hidden" name="userWord" value="gaur" >
+        
+        <form action="{{url}}" method="POST">
+            <input type="hidden" id="test" name="userWord" value="" >
+            <input type="hidden" name="language" value="{{language}}" >
+            <input type="hidden" name="randLettersString" value="{{randLettersString}}" >
             <input type="submit" value="Submit">
         </form>
-        <button method="POST">POST</button>
-        <a id="submit" method="POST" href="{{hre}}" >Submit</a>
     </div>
 {% endblock content %}
 

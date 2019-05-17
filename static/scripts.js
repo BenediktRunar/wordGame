@@ -24,8 +24,7 @@ function printScore(input, word){
 
 $(document).ready(function() {
     //Get existing url
-    var hre = document.getElementById("submit");
-    var baseUrl = hre.getAttribute('href');
+    var test = document.getElementById("test")
     var gameField = $('div.gameContainer').find('div.box1');
     var strOut = "";
     var strLen = 0;
@@ -59,7 +58,8 @@ $(document).ready(function() {
         gameField.find('div.gameBoard').append(letter);
 
         // changing the href attrinbute
-        hre.setAttribute("href", baseUrl + strOut)
+        test.setAttribute("value", strOut)
+        console.log(test)
         //console.log("here: " + hre.getAttribute('href'))
     });
 
@@ -71,6 +71,7 @@ $(document).ready(function() {
     function getOutput(){
         return strOut;
     }
+
     function test(){
         console.log('function within ready scope');
     }
