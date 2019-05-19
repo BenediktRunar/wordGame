@@ -128,5 +128,5 @@ def check_word():
 def gameOver():
     return render_template('gameOver.html', title='Game Over')
 
-if __name__ == '__main__':
-    app.run(debug=True)
+#if __name__ == '__main__':
+#    app.run(debug=True)
